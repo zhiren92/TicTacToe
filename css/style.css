@@ -1,0 +1,25 @@
+h1{
+	text-align: center;
+}
+#second-section{
+	text-align: center;
+}
+nav ul li{
+	display: inline-block;
+}
+
+.row{
+	margin: 0px;
+	padding:0px;
+	text-align: center;
+}
+
+.box{
+	border: 2px solid;
+	display: inline-block;
+	width:100px;
+	height:100px;
+	margin:0px;
+	padding: 0px;
+	background: #4b7eff;
+}
