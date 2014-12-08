@@ -1,25 +1,30 @@
+body {
+	display: inline-block;
+	text-align: center;
+}
+
 h1{
 	text-align: center;
 }
-#second-section{
-	text-align: center;
-}
+
 nav ul li{
 	display: inline-block;
 }
 
-.row{
-	margin: 0px;
-	padding:0px;
-	text-align: center;
+#game-board-container{
+	display:inline-block;
+	width: 800px;
+	height: 900px;
+/*	border: 5px solid black;
+*/	text-align: center;
 }
 
-.box{
-	border: 2px solid;
-	display: inline-block;
-	width:100px;
-	height:100px;
+.squares{
+	border: 5px solid black;
+	width:200px;
+	height:200px;
 	margin:0px;
 	padding: 0px;
-	background: #4b7eff;
+	display: inline-block;
 }
+
