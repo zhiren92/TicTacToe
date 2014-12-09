@@ -35,8 +35,8 @@
 		</section>
 		<section id="main-section">
 			<div id="game-board-container">
-				<div class="squares" ng-repeat="squares in game.newGameBoard.GameBoardSquares"
-				ng->
+				<div class="squares" ng-repeat="squares in game.newGameBoard.GameBoardSquares track by $index"
+				ng-click="game.newGameBoard.PutOnBoard($index)">
 				<!-- ngclick should assign the property of the game board to X or O depending on which turn it is -->
 			</div>
 			</div>

@@ -8,6 +8,7 @@ function GameBoardFunc() {
 
 	var GameBoard= function(){
 
+
 // Pieces will have a property of X or O after a click depending on which turn it is
 		this.GameBoardSquares = [
 			{name:"1", XorO:""},
@@ -22,8 +23,10 @@ function GameBoardFunc() {
 		]
 
 
-	var PutOnBoard = function(){
-			
+	this.PutOnBoard = function($index){
+		this.GameBoardSquares[$index].XorO="X";
+		alert(this.GameBoardSquares[$index].XorO)
+	
 	}
 
 	var GamePieces=function(){

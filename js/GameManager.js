@@ -25,5 +25,5 @@ function GameManagerFunc(){
 		
 		
 	}
-
+return GameManagerFunc
 }
