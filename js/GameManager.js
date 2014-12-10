@@ -3,6 +3,8 @@ angular
 	.factory('GameManager', GameManagerFunc);
 
 function GameManagerFunc(){
+	// this.AssignPlayers=AssignPlayers;
+
 	var Turns = function(){
 //  a function based on how many pieces of X and O are on the board
 //  
@@ -13,17 +15,36 @@ function GameManagerFunc(){
 
 	}
 
-	var PlayerOne = function(){
+	var AssignPlayers = function(){
+	console.log("you are player one");
+	alert("testone")
+
+		// this.PlayerOne = function(){
+		// var PlayerOne = {
+		//	Piece:'X' 
+		// }
+		// }
+
+		// this.PlayerTwo = function(){
+		// var PlayerTwo = {
+			Piece:'O'
+		// }
+		// }
+
 
 	}
 
-	var PlayerTwo = function(){
 
-	}
+	return AssignPlayers;
+
+
+
 
 	var WinScenario=function(){
 		
-		
+	
 	}
-return GameManagerFunc
+
+	return GameManagerFunc
+
 }

@@ -2,15 +2,20 @@ angular
 	.module('tttApp')
 	.factory('GameBoard', GameBoardFunc);
 
-function GameBoardFunc() {
-// this.Gamepieces=GamePieces
+GameBoardFunc.$inject=['$firebase']
+
+
+
+function GameBoardFunc($firebase) {
 
 
 	var GameBoard= function(){
 
 
 // Pieces will have a property of X or O after a click depending on which turn it is
-		this.GameBoardSquares = [
+		
+	
+		var InitialValues = [
 			{name:"1", XorO:""},
 			{name:"2", XorO:""},
 			{name:"3", XorO:""},
@@ -20,30 +25,37 @@ function GameBoardFunc() {
 			{name:"7", XorO:""},
 			{name:"8", XorO:""},
 			{name:"9", XorO:""}
-		]
+		];
+
+	var ref = new Firebase("https://tttproject.firebaseIO.com/GameBoard");
+	this.GameBoardSquares = $firebase(ref).$asArray();
+
+	// for (var i = 0; i < InitialValues.length; i++) {
+	// 	this.GameBoardSquares.$add(InitialValues[i]);
+	// };
+
+
+
+
 
 
 	this.PutOnBoard = function($index){
 		this.GameBoardSquares[$index].XorO="X";
-		alert(this.GameBoardSquares[$index].XorO)
-	
+		this.GameBoardSquares.$save($index);
 	}
 
-	var GamePieces=function(){
-		this.PieceX=PieceX;
-		this.PieceO=PieceO;
 
-		var PieceX = function(){
-			return PieceX
+	this.ClearBoard = function($index){
 
-		};
+		alert("work")
+		// this.GameBoardSquares[$index].XorO="";
+		
+		this.GameBoardSquares[$index].XorO="O";
+		this.GameBoardSquares.$save();
 
-		var PieceO = function(){
-			return PieceO
-		}
 	}
+
 }
-
 
 return GameBoard;
 

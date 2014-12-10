@@ -14,6 +14,10 @@
 		<link rel="stylesheet" href="css/style.css">
 		
 		<script src="js/angular.js"></script>
+		<!-- firebase -->
+		<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+		<!-- angular fire -->
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/GameBoard.js"></script>
 		<script src="js/GameManager.js"></script>
@@ -31,12 +35,18 @@
 					<li>New Game</li>
 					<li>Score</li>
 				</ul>
+<!-- 				<button ng-click="game.newGameManager.AssignPlayers">P1</button>
+		<!-- Assign Player 1 to X -->
+		<!-- 		<button ng-click="game.newGameManager.AssignPlayers">P2</button> -->
+		<!-- Assign Player 2 to O --> 
+				<button ng-click="game.newGameBoard.ClearBoard($index)">CLEAR BOARD</button>
 			</nav>
 		</section>
 		<section id="main-section">
+
 			<div id="game-board-container">
 				<div class="squares" ng-repeat="squares in game.newGameBoard.GameBoardSquares track by $index"
-				ng-click="game.newGameBoard.PutOnBoard($index)">
+				ng-click="game.newGameBoard.PutOnBoard($index)">{{game.newGameBoard.GameBoardSquares[$index].XorO}}
 				<!-- ngclick should assign the property of the game board to X or O depending on which turn it is -->
 			</div>
 			</div>
