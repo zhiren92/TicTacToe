@@ -1,6 +1,8 @@
 body {
 	display: inline-block;
 	text-align: center;
+	/*background-image: url(../images/background.jpg);*/
+	background-repeat: no-repeat;
 }
 
 h1{
@@ -24,5 +26,6 @@ nav ul li{
 	margin:0px;
 	padding: 0px;
 	display: inline-block;
+	text-align: center;
 }
 

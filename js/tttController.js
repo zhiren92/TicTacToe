@@ -2,11 +2,10 @@ angular
 	.module('tttApp')
 	.controller('tttController', tttController);
 
-tttController.$inject = ['GameBoard','GameManager','$firebase'];
+tttController.$inject = ['GameBoard','$firebase'];
 
-function tttController(GameBoard,GameManager,$firebase){
+function tttController(GameBoard,$firebase){
 	this.newGameBoard = new GameBoard();
-	// this.newGameManager = new GameManager;
-
+	
 	
 }
