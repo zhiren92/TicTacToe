@@ -27,19 +27,25 @@
 	<body ng-controller="tttController as game">
 		<section>
 			<h1>Tic Tac Toe</h1>
+			<h2>{{game.newGameBoard.counter}}</h2>
+			<h2>WHOSE TURN {{game.players.whoseturn%2}}</h2>
+			<h2>YOU ARE PLAYER NUMBER{{game.playerNum}}</h2>
+
 		</section>
 		<section>
 			<nav>
-				<button ng-click="game.newGameBoard.ClearBoard($index)">CLEAR BOARD</button>
+				<button ng-click="game.newGameBoard.ClearBoard($index)" ng-disabled="game.playerNum !== game.players.whoseturn%2">NEW GAME</button>
 			</nav>
 		</section>
 		<section id="main-section">
 
 			<div id="game-board-container">
-				<div class="squares" ng-repeat="squares in game.newGameBoard.GameBoardSquares track by $index"
-				ng-click="game.newGameBoard.PutOnBoard($index)" >{{game.newGameBoard.GameBoardSquares[$index].XorO}}
+				<button class="squares" ng-repeat="squares in game.newGameBoard.GameBoardSquares track by $index"
+				ng-click="game.newGameBoard.PutOnBoard($index);game.whoseturnInc();" ng-disabled="game.playerNum !== game.players.whoseturn%2" 
+				
+				>{{game.newGameBoard.GameBoardSquares[$index].XorO}}
 				<!-- ng-click should assign the property of the game board to X or O depending on which turn it is -->
-				</div>
+				</button>
 			</div>
 		</section>
 	</body>

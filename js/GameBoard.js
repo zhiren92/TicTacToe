@@ -9,14 +9,16 @@ GameBoardFunc.$inject=['$firebase']
 function GameBoardFunc($firebase) {
 
 
-	var GameBoard = function(){
+	var GameBoard = function(players){
 
 		var self = this;
+		this.createBoard = createBoard;
+		self.InitialValues = InitialValues;
 
 // Pieces will have a property of X or O after a click depending on which turn it is
 		
 	
-		 InitialValues = [
+		var InitialValues = [
 			{XorO:"."},
 			{XorO:"."},
 			{XorO:"."},
@@ -30,11 +32,16 @@ function GameBoardFunc($firebase) {
 
 	var ref = new Firebase("https://tttproject.firebaseIO.com/GameBoard");
 	self.GameBoardSquares = $firebase(ref).$asArray();
-	// for (var i = 0; i < InitialValues.length; i++) {
-	// 	this.GameBoardSquares.$add(InitialValues[i]);
-	// };
 
 
+	function createBoard(){
+	ref.$remove();
+
+	for (var i = 0; i < InitialValues.length; i++) {
+		this.GameBoardSquares.$add(InitialValues[i]);
+	};
+
+}
 
 	this.counter = getCounter();
 	
@@ -44,7 +51,7 @@ function GameBoardFunc($firebase) {
 		var counter = $firebase(ref).$asObject();
 		counter.$loaded().then(function(){
 			counter.turn=0;
-		})
+		});
 		return counter;
 	}
 
@@ -55,7 +62,6 @@ function GameBoardFunc($firebase) {
 			return false;	
 		}
 		
-
 		this.counter.turn++;
 		this.counter.$save();
 
@@ -65,6 +71,7 @@ function GameBoardFunc($firebase) {
 		} else {
 			self.GameBoardSquares[$index].XorO="O";
 			self.GameBoardSquares.$save($index);
+
 	
 	}
 
@@ -76,22 +83,20 @@ function GameBoardFunc($firebase) {
 
 
 	function WinGame(){
-		// console.log(self.GameBoardSquares);
 		self.GameBoardSquares.$loaded(function() {
 
 			XorOArray=[];
 		for (var i = 0; i < self.GameBoardSquares.length; i++) {
 			XorOArray.push(self.GameBoardSquares[i].XorO)
 
-			console.log(XorOArray);
+			// console.log(XorOArray)
 
 
 			function ArrToStr(i1, i2, i3, arr) {
-			return arr[i1]+arr[i2]+arr[i3];
+			return arr[i1]+arr[i2]+arr[i3];	
 		}
-
 			
-			};
+	};
 		if (ArrToStr(0,1,2, XorOArray)==="XXX") {
 				alert("X WIN")
 		};
@@ -107,7 +112,7 @@ function GameBoardFunc($firebase) {
 		if (ArrToStr(1,4,7, XorOArray)==="XXX") {
 				alert("X WIN")
 		};
-		if (ArrToStr(3,5,8, XorOArray)==="XXX") {
+		if (ArrToStr(2,5,8, XorOArray)==="XXX") {
 				alert("X WIN")
 		};
 		if (ArrToStr(0,4,8, XorOArray)==="XXX") {
@@ -131,7 +136,7 @@ function GameBoardFunc($firebase) {
 		if (ArrToStr(1,4,7, XorOArray)==="OOO") {
 				alert("O WIN")
 		};
-		if (ArrToStr(3,5,8, XorOArray)==="OOO") {
+		if (ArrToStr(2,5,8, XorOArray)==="OOO") {
 				alert("O WIN")
 		};
 		if (ArrToStr(0,4,8, XorOArray)==="OOO") {
@@ -141,46 +146,37 @@ function GameBoardFunc($firebase) {
 				alert("O WIN")
 		};
 
+		if (self.GameBoardSquares[0].XorO && self.GameBoardSquares[1].XorO && self.GameBoardSquares[2].XorO && self.GameBoardSquares[3].XorO && self.GameBoardSquares[4].XorO && self.GameBoardSquares[5].XorO && self.GameBoardSquares[6].XorO && self.GameBoardSquares[7].XorO && self.GameBoardSquares[8].XorO !=="." ) {
+				alert("tie")
+		}
+
+
 	})
 }		
 
 
-
-	
-
-
-	// 	};
-	// // takes all the XorO property of the array and makes a new array of that property.
-
-	// 	
-
-	// 
-	// 	};
-	
-		
-	
-
-	
-	WinGame();
-
-
-
-
 	this.ClearBoard = function(){
 
-		
-	for (var i = 0; i < self.GameBoardSquares.length; i++) {
-	  self.GameBoardSquares.$remove(self.GameBoardSquares[i]);
-	};
 
-	for (var i = 0; i < InitialValues.length; i++) {
-	  self.GameBoardSquares.$add(InitialValues[i]);
-	};
+	players.numPlayers = 0;
+	players.$save();
 
-	self.counter=0;
+	
+			
+		for (var i = 0; i < self.GameBoardSquares.length; i++) {
+		  self.GameBoardSquares.$remove(self.GameBoardSquares[i]);
+		};
+
+		for (var i = 0; i < InitialValues.length; i++) {
+		  self.GameBoardSquares.$add(InitialValues[i]);
+		};
+
+
+
+		self.counter.turn=0;
+		players.$save();
 
 	}
-
 }
 
 return GameBoard;
