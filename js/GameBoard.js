@@ -74,10 +74,13 @@ function GameBoardFunc($firebase) {
 
 	
 	}
-
+		console.log(this.counter.turn)
 			WinGame();
+			if (this.counter.turn>8 && self.GameBoardSquares[0].XorO && self.GameBoardSquares[1].XorO && self.GameBoardSquares[2].XorO && self.GameBoardSquares[3].XorO && self.GameBoardSquares[4].XorO && self.GameBoardSquares[5].XorO && self.GameBoardSquares[6].XorO && self.GameBoardSquares[7].XorO && self.GameBoardSquares[8].XorO !=="." ) {
+				alert("Cats Game")
+			}
+			
 	}
-
 
 	var XorOArray = [] ;
 
@@ -89,7 +92,7 @@ function GameBoardFunc($firebase) {
 		for (var i = 0; i < self.GameBoardSquares.length; i++) {
 			XorOArray.push(self.GameBoardSquares[i].XorO)
 
-			// console.log(XorOArray)
+			// console.log(this.counter.turn)
 
 
 			function ArrToStr(i1, i2, i3, arr) {
@@ -99,56 +102,63 @@ function GameBoardFunc($firebase) {
 	};
 		if (ArrToStr(0,1,2, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else 
 		if (ArrToStr(3,4,5, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else
 		if (ArrToStr(6,7,8, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else
 		if (ArrToStr(0,3,6, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else
 		if (ArrToStr(1,4,7, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else
 		if (ArrToStr(2,5,8, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else
 		if (ArrToStr(0,4,8, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else
 		if (ArrToStr(2,4,6, XorOArray)==="XXX") {
 				alert("X WIN")
-		};
+		} else
 		if (ArrToStr(0,1,2, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} else
 		if (ArrToStr(3,4,5, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} else
 		if (ArrToStr(6,7,8, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} else
 		if (ArrToStr(0,3,6, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} else
 		if (ArrToStr(1,4,7, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} else
 		if (ArrToStr(2,5,8, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} else
 		if (ArrToStr(0,4,8, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} else
 		if (ArrToStr(2,4,6, XorOArray)==="OOO") {
 				alert("O WIN")
-		};
+		} 
+		console.log (self.counter.turn)
+		// else 
+		// if (this.counter.turn > 8) {
+			
+		// 	alert("Cat's Game")
+		// }
+		
 
-		if (self.GameBoardSquares[0].XorO && self.GameBoardSquares[1].XorO && self.GameBoardSquares[2].XorO && self.GameBoardSquares[3].XorO && self.GameBoardSquares[4].XorO && self.GameBoardSquares[5].XorO && self.GameBoardSquares[6].XorO && self.GameBoardSquares[7].XorO && self.GameBoardSquares[8].XorO !=="." ) {
-				alert("tie")
-		}
+		
+
+		
 
 
 	})

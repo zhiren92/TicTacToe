@@ -12,6 +12,7 @@
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 		
 		<script src="js/angular.js"></script>
 		<!-- firebase -->
@@ -25,11 +26,10 @@
 	</head>
 
 	<body ng-controller="tttController as game">
-		<section>
+		<section id="title">
 			<h1>Tic Tac Toe</h1>
-			<h2>{{game.newGameBoard.counter}}</h2>
-			<h2>WHOSE TURN {{game.players.whoseturn%2}}</h2>
-			<h2>YOU ARE PLAYER NUMBER{{game.playerNum}}</h2>
+			<h2>Player {{game.players.whoseturn%2}}'s Turn</h2>
+			<h2>You are player number {{game.playerNum}}</h2>
 
 		</section>
 		<section>
